@@ -18,9 +18,25 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-  <title>标签 - Hexo</title>
+  <title>673-最长递增子序列的个数 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -48,7 +64,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -179,17 +195,50 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="标签">
+            <span class="h2" id="subtitle" title="673-最长递增子序列的个数">
               
             </span>
 
             
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-25 16:01" pubdate>
+        2021年9月25日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      260 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      4
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
           </div>
 
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
           
         </div>
       </div>
@@ -198,24 +247,92 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      
 
-<div class="text-center tagcloud">
-  <a href="/tags/hexo/" style="font-size: 15px; color: #bbe">hexo</a> <a href="/tags/leetcode/" style="font-size: 30px; color: #337ab7">leetcode</a>
-</div>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">673-最长递增子序列的个数</h1>
+            
+            <div class="markdown-body">
+              <p> 给定一个未排序的整数数组，找到最长递增子序列的个数。 </p>
+<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/number-of-longest-increasing-subsequence/">https://leetcode-cn.com/problems/number-of-longest-increasing-subsequence/</a></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>在300找LIS的基础上，加一个数组记录i位置结尾的LIS的个数，最后把序列最长的数量累加。</p>
+<h2 id="代码-O-N-2"><a href="#代码-O-N-2" class="headerlink" title="代码 O(N^2)"></a>代码 O(N^2)</h2><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs inform7">class Solution &#123;<br>    public int findNumberOfLIS(int<span class="hljs-comment">[]</span> nums) &#123;<br>        int dp<span class="hljs-comment">[]</span> = new int<span class="hljs-comment">[nums.length]</span>;<br>        int combination<span class="hljs-comment">[]</span> = new int<span class="hljs-comment">[nums.length]</span>;<br>        int max = 1;<br>        for(int i = 0; i &lt; nums.length; i++) &#123;<br>        	dp<span class="hljs-comment">[i]</span> = 1;<br>        	combination<span class="hljs-comment">[i]</span> = 1;<br>        &#125;<br>        for(int i = 1; i &lt; nums.length; i++)&#123;<br>            for(int j = 0; j &lt; i; j++)&#123;<br>                if(nums<span class="hljs-comment">[j]</span> &lt; nums<span class="hljs-comment">[i]</span>)&#123;<br>                	if(dp<span class="hljs-comment">[i]</span> &lt; dp<span class="hljs-comment">[j]</span> + 1)&#123;<br>                		dp<span class="hljs-comment">[i]</span> = dp<span class="hljs-comment">[j]</span> + 1;<br>                		// 长度dp加1了，相当于任然是当前LIS，组合数不变<br>                		combination<span class="hljs-comment">[i]</span> = combination<span class="hljs-comment">[j]</span>;<br>                	&#125;else if(dp<span class="hljs-comment">[i]</span> == dp<span class="hljs-comment">[j]</span> + 1)&#123;<br>                		// 长度不变，找到了新的组合。<br>                		combination<span class="hljs-comment">[i]</span> += combination<span class="hljs-comment">[j]</span>;<br>                	&#125;<br>                    dp<span class="hljs-comment">[i]</span> = (dp<span class="hljs-comment">[j]</span> + 1) &gt; dp<span class="hljs-comment">[i]</span> ? dp<span class="hljs-comment">[j]</span> + 1 : dp<span class="hljs-comment">[i]</span>;<br>                &#125;<br>            &#125;<br>            max = Math.max(max, dp<span class="hljs-comment">[i]</span>);<br>        &#125;<br>        int res = 0;<br>        for(int i = 0; i&lt; nums.length; ++i)&#123;<br>            if(dp<span class="hljs-comment">[i]</span> == max)&#123;<br>                res+=combination<span class="hljs-comment">[i]</span>;<br>            &#125;<br>        &#125;<br>        return res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-              </div>
+
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/leetcode/">leetcode</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/25/725-%E5%88%86%E9%9A%94%E9%93%BE%E8%A1%A8/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">725-分隔链表</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/24/300-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/">
+                        <span class="hidden-mobile">300.最长递增子序列</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -295,9 +412,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 

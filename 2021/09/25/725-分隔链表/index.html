@@ -18,7 +18,7 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-  <title>搭建博客 - Hexo</title>
+  <title>725-分隔链表 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -195,7 +195,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="搭建博客">
+            <span class="h2" id="subtitle" title="725-分隔链表">
               
             </span>
 
@@ -205,8 +205,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-09-07 22:43" pubdate>
-        2021年9月7日 晚上
+      <time datetime="2021-09-25 16:31" pubdate>
+        2021年9月25日 下午
       </time>
     </span>
   
@@ -217,7 +217,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      132 字
+      455 字
     </span>
   
 
@@ -227,7 +227,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      6
        分钟
     </span>
   
@@ -257,30 +257,20 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">搭建博客</h1>
+            <h1 style="display: none">725-分隔链表</h1>
             
             <div class="markdown-body">
-              <h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs vala"><span class="hljs-meta"># NodeJs安装</span><br><br><span class="hljs-meta"># 确认版本号</span><br>node -v<br>npm -v<br><br><span class="hljs-meta"># 安装Node.js淘宝镜像加速器（cnpm）</span><br>npm install -g cnpm --registry=https:<span class="hljs-comment">//registry.npm.taobao.org</span><br>cnpm -v<br></code></pre></td></tr></table></figure>
+              <p>给你一个头结点为 head 的单链表和一个整数 k ，请你设计一个算法将链表分隔为 k 个连续的部分。</p>
+<p>每部分的长度应该尽可能的相等：任意两部分的长度差距不能超过 1 。这可能会导致有些部分为 null 。</p>
+<p>这 k 个部分应该按照在链表中出现的顺序排列，并且排在前面的部分的长度应该大于或等于排在后面的长度。</p>
+<p>返回一个由上述 k 部分组成的数组。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/split-linked-list-in-parts">https://leetcode-cn.com/problems/split-linked-list-in-parts</a></p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stylus">输入：head = <span class="hljs-selector-attr">[1,2,3]</span>, k = <span class="hljs-number">5</span><br>输出：<span class="hljs-selector-attr">[[1]</span>,<span class="hljs-selector-attr">[2]</span>,<span class="hljs-selector-attr">[3]</span>,<span class="hljs-selector-attr">[]</span>,<span class="hljs-selector-attr">[]</span>]<br>解释：<br>第一个元素 output<span class="hljs-selector-attr">[0]</span> 为 output<span class="hljs-selector-attr">[0]</span><span class="hljs-selector-class">.val</span> = <span class="hljs-number">1</span> ，output<span class="hljs-selector-attr">[0]</span><span class="hljs-selector-class">.next</span> = null 。<br>最后一个元素 output<span class="hljs-selector-attr">[4]</span> 为 null ，但它作为 ListNode 的字符串表示是 <span class="hljs-selector-attr">[]</span> 。<br></code></pre></td></tr></table></figure>
 
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>题意是尽可能均匀分成k分，所以链表数组长度为k，每个链表元素中节点数最少为 head.length/k。</p>
+<p>余下的节点head.length%k应该要逐个分个前面的元素。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs q">/**<br> * Definition for singly-linked list.<br> * public class ListNode &#123;<br> *     <span class="hljs-type">int</span> val;<br> *     ListNode <span class="hljs-built_in">next</span>;<br> *     ListNode() &#123;&#125;<br> *     ListNode(<span class="hljs-type">int</span> val) &#123; this.val = val; &#125;<br> *     ListNode(<span class="hljs-type">int</span> val, ListNode <span class="hljs-built_in">next</span>) &#123; this.val = val; this.<span class="hljs-built_in">next</span> = <span class="hljs-built_in">next</span>; &#125;<br> * &#125;<br> */<br>class Solution &#123;<br>    public ListNode[] splitListToParts(ListNode head, <span class="hljs-type">int</span> k) &#123;<br>        <span class="hljs-type">int</span> len = getLen(head);<br>        <span class="hljs-type">int</span> a = len / k;<br>        <span class="hljs-type">int</span> b = len % k;<br>        ListNode output[] = new ListNode[k];<br>        <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br>        ListNode p = head;<br>        <span class="hljs-keyword">while</span>(p!=<span class="hljs-built_in">null</span> &amp;&amp; i&lt;k)&#123;<br>            output[i] = p;<br>            i++;<br>            if(a!=<span class="hljs-number">0</span>)&#123;<br>                for(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; a<span class="hljs-number">-1</span>; j++)&#123;<br>                    p = p.<span class="hljs-built_in">next</span>;<br>                &#125;<br>                if(b!=<span class="hljs-number">0</span>)&#123;<br>                    p = p.<span class="hljs-built_in">next</span>;<br>                    b--;<br>                &#125;<br>            &#125;<br>            <span class="hljs-comment">//断链</span><br>            if(p != <span class="hljs-built_in">null</span>)&#123;<br>                 ListNode t = p.<span class="hljs-built_in">next</span>;<br>                p.<span class="hljs-built_in">next</span> = <span class="hljs-built_in">null</span>;<br>                p = t;<br>            &#125;<br>           <br>        &#125;<br>        <span class="hljs-comment">// //空元素补null ，初始化为null，不用补</span><br>        <span class="hljs-comment">// while(i&lt;k)&#123;</span><br>        <span class="hljs-comment">//     output[i] = null;</span><br>        <span class="hljs-comment">//     i++;</span><br>        <span class="hljs-comment">// &#125;</span><br>        return output;<br>    &#125;<br><br>    <span class="hljs-type">int</span> getLen(ListNode head)&#123;<br>        <span class="hljs-type">int</span> len = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span>(head!=<span class="hljs-built_in">null</span>)&#123;<br>            len++;<br>            head = head.<span class="hljs-built_in">next</span>;<br>        &#125;<br>        return len;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-
-<hr>
-<h2 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake">cnpm <span class="hljs-keyword">install</span> -g hexo-cil<br>hexo -v<br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="创建博客"><a href="#创建博客" class="headerlink" title="创建博客"></a>创建博客</h2><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs axapta">mkdir blog<br>cd blog<br><br>sudo hexo init <span class="hljs-meta">#初始化生成博客</span><br><br>hexo <span class="hljs-keyword">server</span> <span class="hljs-meta"># 启动本地博客服务 4000端口</span><br><br>hexo <span class="hljs-keyword">new</span>  <span class="hljs-string">&quot;post名称&quot;</span>  <span class="hljs-meta"># 创建新文章</span><br><br>hexo clean  <span class="hljs-meta"># 清理</span><br><br>hexo g <span class="hljs-meta"># 生成</span><br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="部署到gitee"><a href="#部署到gitee" class="headerlink" title="部署到gitee"></a>部署到gitee</h2><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-comment">#项目根目录下安装git 部署插件</span><br><br>cnpm <span class="hljs-keyword">install </span>--save hexo-deployer-git<br><br><br><br>配置文件_<span class="hljs-built_in">config</span>.yml设置<br><br></code></pre></td></tr></table></figure>
-
-
-
-
-
-<hr>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a target="_blank" rel="noopener" href="http://www.codesheep.cn/">www.codesheep.cn</a></p>
 
             </div>
             <hr>
@@ -291,7 +281,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/hexo/">hexo</a>
+                      <a class="hover-with-bg" href="/tags/leetcode/">leetcode</a>
                     
                   </div>
                 
@@ -308,9 +298,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/09/24/300-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/">
+                      <a href="/2021/09/25/430-%E6%89%81%E5%B9%B3%E5%8C%96%E5%A4%9A%E7%BA%A7%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">300.最长递增子序列</span>
+                        <span class="hidden-mobile">430-扁平化多级双向链表</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -318,8 +308,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/09/07/hello-world/">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2021/09/25/673-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97%E7%9A%84%E4%B8%AA%E6%95%B0/">
+                        <span class="hidden-mobile">673-最长递增子序列的个数</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
