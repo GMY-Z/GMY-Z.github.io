@@ -18,7 +18,7 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-  <title>430-扁平化多级双向链表 - Hexo</title>
+  <title>583-两个字符串的删除操作 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -195,7 +195,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="430-扁平化多级双向链表">
+            <span class="h2" id="subtitle" title="583-两个字符串的删除操作">
               
             </span>
 
@@ -205,8 +205,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-09-25 21:07" pubdate>
-        2021年9月25日 晚上
+      <time datetime="2021-09-26 10:17" pubdate>
+        2021年9月26日 上午
       </time>
     </span>
   
@@ -217,7 +217,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      477 字
+      223 字
     </span>
   
 
@@ -227,7 +227,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      3
        分钟
     </span>
   
@@ -257,26 +257,14 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">430-扁平化多级双向链表</h1>
+            <h1 style="display: none">583-两个字符串的删除操作</h1>
             
             <div class="markdown-body">
-              <p>多级双向链表中，除了指向下一个节点和前一个节点指针之外，它还有一个子链表指针，可能指向单独的双向链表。这些子列表也可能会有一个或多个自己的子项，依此类推，生成多级数据结构，如下面的示例所示。</p>
-<p>给你位于列表第一级的头节点，请你扁平化列表，使所有结点出现在单级双链表中。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/flatten-a-multilevel-doubly-linked-list">https://leetcode-cn.com/problems/flatten-a-multilevel-doubly-linked-list</a></p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs nix">输入：<span class="hljs-attr">head</span> = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-literal">null</span>,<span class="hljs-literal">null</span>,<span class="hljs-literal">null</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>,<span class="hljs-literal">null</span>,<span class="hljs-literal">null</span>,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>]<br>输出：[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>]<br>解释：<br><br>输入的多级列表如下图所示：<br></code></pre></td></tr></table></figure>
+              <p> 给定两个单词 <em>word1</em> 和 <em>word2</em>，找到使得 <em>word1</em> 和 <em>word2</em> 相同所需的最小步数，每步可以删除任意一个字符串中的一个字符 。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs 1c">输入: <span class="hljs-string">&quot;sea&quot;</span>, <span class="hljs-string">&quot;eat&quot;</span><br>输出: <span class="hljs-number">2</span><br>解释: 第一步将<span class="hljs-string">&quot;sea&quot;</span>变为<span class="hljs-string">&quot;ea&quot;</span>，第二步将<span class="hljs-string">&quot;eat&quot;</span>变为<span class="hljs-string">&quot;ea&quot;</span><br></code></pre></td></tr></table></figure>
 
-
-
-<p><img src="https://gitee.com/gmy99/pic-go/raw/master/img/202109252108936.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>dfs</p>
-<p>迭代</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">/*<br>// Definition for a Node.<br>class <span class="hljs-keyword">Node</span> <span class="hljs-title">&#123;</span><br><span class="hljs-title">    public</span> int val;<br>    public <span class="hljs-keyword">Node</span> <span class="hljs-title">prev</span>;<br>    public <span class="hljs-keyword">Node</span> <span class="hljs-title">next</span>;<br>    public <span class="hljs-keyword">Node</span> <span class="hljs-title">child</span>;<br>&#125;;<br>*/<br><br>class Solution &#123;<br>    public <span class="hljs-keyword">Node</span> <span class="hljs-title">flatten</span>(<span class="hljs-keyword">Node</span> <span class="hljs-title">head</span>) &#123;<br>        // 有child，child.<span class="hljs-attr">prev=</span>parent. 记parent<br>        // 没有child,next<br>        //     next 为空，回到parant<br><br>        <span class="hljs-keyword">Node</span> <span class="hljs-title">cur</span> = head;<br>        int i = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">Node</span><span class="hljs-title">[] parent</span> = new <span class="hljs-keyword">Node</span><span class="hljs-title">[1000</span>];<br>        while(cur != null)&#123;<br>            if(cur.child != null)&#123;<br>                parent[i++] = cur;<br>                cur = cur.child;<br>                cur.prev = parent[i-<span class="hljs-number">1</span>];<br>            &#125;else&#123;<br>                <span class="hljs-keyword">Node</span> <span class="hljs-title">pre</span> = cur;<br>                cur = cur.next;<br>                while(cur == null &amp;&amp; i&gt;<span class="hljs-number">0</span>)&#123; //到底且有parent<br>                    cur = parent[--i].next;//回溯<br>                    parent[i].next = parent[i].child;<br>                    parent[i].child = null;<br>                    if(cur !=null)&#123;<br>                         pre.next = cur;<br>                        cur.prev = pre;<br>                    &#125;<br>                   <br>                &#125;<br>            &#125;<br>        &#125;<br>        return head;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="改进版"><a href="#改进版" class="headerlink" title="改进版"></a>改进版</h2><p> 为防止空节点等边界问题，起始时建立一个哨兵节点 dummy 指向 head</p>
-<p>有child的时候，把child的last接到tmp上，不用栈存parent</p>
-<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs xquery">class Solution &#123;<br>    public Node flatten(Node<span class="hljs-built_in"> head</span>) &#123;<br>        Node dummy = new Node(<span class="hljs-number">0</span>);<br>        dummy.<span class="hljs-keyword">next</span> =<span class="hljs-built_in"> head</span>;<br>        <span class="hljs-keyword">for</span> (;<span class="hljs-built_in"> head</span> != null;<span class="hljs-built_in"> head</span> =<span class="hljs-built_in"> head</span>.<span class="hljs-keyword">next</span>) &#123;<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">(head</span>.child != null) &#123;<br>                Node tmp =<span class="hljs-built_in"> head</span>.<span class="hljs-keyword">next</span>;<br>                Node child =<span class="hljs-built_in"> head</span>.child;<br>               <span class="hljs-built_in"> head</span>.<span class="hljs-keyword">next</span> = child;<br>                child.prev =<span class="hljs-built_in"> head</span>;<br>               <span class="hljs-built_in"> head</span>.child = null;<br>                Node<span class="hljs-built_in"> last</span> =<span class="hljs-built_in"> head</span>;<br>                while <span class="hljs-built_in">(last</span>.<span class="hljs-keyword">next</span> != null)<span class="hljs-built_in"> last</span> =<span class="hljs-built_in"> last</span>.<span class="hljs-keyword">next</span>;<br>               <span class="hljs-built_in"> last</span>.<span class="hljs-keyword">next</span> = tmp;<br>                <span class="hljs-keyword">if</span> (tmp != null) tmp.prev =<span class="hljs-built_in"> last</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> dummy.<span class="hljs-keyword">next</span>;<br>    &#125;<br>&#125;<br><br>作者：AC_OIer<br>链接：https://leetcode-cn.com/problems/flatten-a-multilevel-doubly-linked-list/solution/gong-shui-san-xie-yi-ti-shuang-jie-di-gu-<span class="hljs-number">9</span>wfz/）<br></code></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>转化为求最长公共子序列</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-keyword">class</span> Solution &#123;<br>    public <span class="hljs-built_in">int</span> min<span class="hljs-constructor">Distance(String <span class="hljs-params">word1</span>, String <span class="hljs-params">word2</span>)</span> &#123;<br>        <span class="hljs-comment">//找最长公共子序列</span><br>        <span class="hljs-built_in">int</span> m = word1.length<span class="hljs-literal">()</span>;<br>        <span class="hljs-built_in">int</span> n = word2.length<span class="hljs-literal">()</span>;<br>        <br>        <span class="hljs-comment">//dp[i][j] 表示word1[0...i-1] 与 word2[0...j-1]的最大公共子序列长度</span><br>        <span class="hljs-built_in">int</span><span class="hljs-literal">[]</span><span class="hljs-literal">[]</span> dp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span><span class="hljs-literal">[<span class="hljs-identifier">m</span>+<span class="hljs-number">1</span>]</span><span class="hljs-literal">[<span class="hljs-identifier">n</span>+<span class="hljs-number">1</span>]</span>;<br><br>        <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; ++i)&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; ++j)&#123;<br>                <span class="hljs-keyword">if</span>(word1.<span class="hljs-built_in">char</span><span class="hljs-constructor">At(<span class="hljs-params">i</span>-1)</span><span class="hljs-operator"> == </span>word2.<span class="hljs-built_in">char</span><span class="hljs-constructor">At(<span class="hljs-params">j</span>-1)</span>)&#123;<br>                    dp<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span><span class="hljs-literal">[<span class="hljs-identifier">j</span>]</span> = dp<span class="hljs-literal">[<span class="hljs-identifier">i</span>-<span class="hljs-number">1</span>]</span><span class="hljs-literal">[<span class="hljs-identifier">j</span>-<span class="hljs-number">1</span>]</span>+<span class="hljs-number">1</span>;<br>                &#125;<span class="hljs-keyword">else</span>&#123;<br>                    dp<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span><span class="hljs-literal">[<span class="hljs-identifier">j</span>]</span> = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Math</span>.</span></span>max(dp<span class="hljs-literal">[<span class="hljs-identifier">i</span>-<span class="hljs-number">1</span>]</span><span class="hljs-literal">[<span class="hljs-identifier">j</span>]</span>, dp<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span><span class="hljs-literal">[<span class="hljs-identifier">j</span>-<span class="hljs-number">1</span>]</span>);<br>                &#125;<br>            &#125;<br>        &#125;<br>        return m + n - dp<span class="hljs-literal">[<span class="hljs-identifier">m</span>]</span><span class="hljs-literal">[<span class="hljs-identifier">n</span>]</span>*<span class="hljs-number">2</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
             </div>
@@ -288,7 +276,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/leetcode/">leetcode</a>
+                      <a class="hover-with-bg" href="/tags/DP/">DP</a>
                     
                   </div>
                 
@@ -305,9 +293,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/09/26/583-%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C/">
+                      <a href="/2021/09/27/91-%E8%A7%A3%E7%A0%81%E6%96%B9%E6%B3%95/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">583-两个字符串的删除操作</span>
+                        <span class="hidden-mobile">91-解码方法</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -315,8 +303,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/09/25/725-%E5%88%86%E9%9A%94%E9%93%BE%E8%A1%A8/">
-                        <span class="hidden-mobile">725-分隔链表</span>
+                      <a href="/2021/09/25/430-%E6%89%81%E5%B9%B3%E5%8C%96%E5%A4%9A%E7%BA%A7%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/">
+                        <span class="hidden-mobile">430-扁平化多级双向链表</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
