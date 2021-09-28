@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>437-路径总和</title>
+    <link href="/2021/09/28/437-%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C/"/>
+    <url>/2021/09/28/437-%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C/</url>
+    
+    <content type="html"><![CDATA[<p>给定一个二叉树的根节点 root ，和一个整数 targetSum ，求该二叉树里节点值之和等于 targetSum 的 路径 的数目。</p><p>路径 不需要从根节点开始，也不需要在叶子节点结束，但是路径方向必须是向下的（只能从父节点到子节点）。</p><p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/path-sum-iii">https://leetcode-cn.com/problems/path-sum-iii</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>先一个dfs遍历每个节点，另一个dfs找满足条件的路径。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs ocaml">/**<br> * <span class="hljs-type">Definition</span> <span class="hljs-keyword">for</span> a binary tree node.<br> * public <span class="hljs-keyword">class</span> <span class="hljs-type">TreeNode</span> &#123;<br> *     <span class="hljs-built_in">int</span> <span class="hljs-keyword">val</span>;<br> *     <span class="hljs-type">TreeNode</span> left;<br> *     <span class="hljs-type">TreeNode</span> right;<br> *     <span class="hljs-type">TreeNode</span><span class="hljs-literal">()</span> &#123;&#125;<br> *     <span class="hljs-type">TreeNode</span>(<span class="hljs-built_in">int</span> <span class="hljs-keyword">val</span>) &#123; this.<span class="hljs-keyword">val</span> = <span class="hljs-keyword">val</span>; &#125;<br> *     <span class="hljs-type">TreeNode</span>(<span class="hljs-built_in">int</span> <span class="hljs-keyword">val</span>, <span class="hljs-type">TreeNode</span> left, <span class="hljs-type">TreeNode</span> right) &#123;<br> *         this.<span class="hljs-keyword">val</span> = <span class="hljs-keyword">val</span>;<br> *         this.left = left;<br> *         this.right = right;<br> *     &#125;<br> * &#125;<br> */<br><span class="hljs-keyword">class</span> <span class="hljs-type">Solution</span> &#123;<br>    <span class="hljs-built_in">int</span> ans = <span class="hljs-number">0</span>, t;<br>    public <span class="hljs-built_in">int</span> pathSum(<span class="hljs-type">TreeNode</span> root, <span class="hljs-built_in">int</span> targetSum) &#123;<br>        t = targetSum;<br>        dfs1(root);<br>        return ans;<br>    &#125;<br><br>    void dfs1(<span class="hljs-type">TreeNode</span> root)&#123;<br>        <span class="hljs-keyword">if</span>(root == null) return;<br>        dfs2(root, root.<span class="hljs-keyword">val</span>);<br>        dfs1(root.left);<br>        dfs1(root.right);<br>    &#125;<br><br>    void dfs2(<span class="hljs-type">TreeNode</span> root, <span class="hljs-built_in">int</span> <span class="hljs-keyword">val</span>)&#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">val</span> ==t ) ans++;<br>        <span class="hljs-keyword">if</span>(root.left !=null) dfs2(root.left, <span class="hljs-keyword">val</span>+root.left.<span class="hljs-keyword">val</span>);<br>        <span class="hljs-keyword">if</span>(root.right !=null) dfs2(root.right, <span class="hljs-keyword">val</span>+root.right.<span class="hljs-keyword">val</span>);<br>    &#125;<br><br><br>&#125;<br></code></pre></td></tr></table></figure><h2 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h2>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>dfs</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>91-解码方法</title>
     <link href="/2021/09/27/91-%E8%A7%A3%E7%A0%81%E6%96%B9%E6%B3%95/"/>
     <url>/2021/09/27/91-%E8%A7%A3%E7%A0%81%E6%96%B9%E6%B3%95/</url>
