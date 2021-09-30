@@ -18,7 +18,7 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-  <title>437-路径总和 - Hexo</title>
+  <title>数组中的逆序对 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -195,7 +195,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="437-路径总和">
+            <span class="h2" id="subtitle" title="数组中的逆序对">
               
             </span>
 
@@ -205,8 +205,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-09-28 22:05" pubdate>
-        2021年9月28日 晚上
+      <time datetime="2021-09-30 16:41" pubdate>
+        2021年9月30日 下午
       </time>
     </span>
   
@@ -217,7 +217,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      281 字
+      323 字
     </span>
   
 
@@ -227,7 +227,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      5
        分钟
     </span>
   
@@ -257,16 +257,25 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">437-路径总和</h1>
+            <h1 style="display: none">数组中的逆序对</h1>
             
             <div class="markdown-body">
-              <p>给定一个二叉树的根节点 root ，和一个整数 targetSum ，求该二叉树里节点值之和等于 targetSum 的 路径 的数目。</p>
-<p>路径 不需要从根节点开始，也不需要在叶子节点结束，但是路径方向必须是向下的（只能从父节点到子节点）。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/path-sum-iii">https://leetcode-cn.com/problems/path-sum-iii</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>先一个dfs遍历每个节点，另一个dfs找满足条件的路径。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs ocaml">/**<br> * <span class="hljs-type">Definition</span> <span class="hljs-keyword">for</span> a binary tree node.<br> * public <span class="hljs-keyword">class</span> <span class="hljs-type">TreeNode</span> &#123;<br> *     <span class="hljs-built_in">int</span> <span class="hljs-keyword">val</span>;<br> *     <span class="hljs-type">TreeNode</span> left;<br> *     <span class="hljs-type">TreeNode</span> right;<br> *     <span class="hljs-type">TreeNode</span><span class="hljs-literal">()</span> &#123;&#125;<br> *     <span class="hljs-type">TreeNode</span>(<span class="hljs-built_in">int</span> <span class="hljs-keyword">val</span>) &#123; this.<span class="hljs-keyword">val</span> = <span class="hljs-keyword">val</span>; &#125;<br> *     <span class="hljs-type">TreeNode</span>(<span class="hljs-built_in">int</span> <span class="hljs-keyword">val</span>, <span class="hljs-type">TreeNode</span> left, <span class="hljs-type">TreeNode</span> right) &#123;<br> *         this.<span class="hljs-keyword">val</span> = <span class="hljs-keyword">val</span>;<br> *         this.left = left;<br> *         this.right = right;<br> *     &#125;<br> * &#125;<br> */<br><span class="hljs-keyword">class</span> <span class="hljs-type">Solution</span> &#123;<br>    <span class="hljs-built_in">int</span> ans = <span class="hljs-number">0</span>, t;<br>    public <span class="hljs-built_in">int</span> pathSum(<span class="hljs-type">TreeNode</span> root, <span class="hljs-built_in">int</span> targetSum) &#123;<br>        t = targetSum;<br>        dfs1(root);<br>        return ans;<br>    &#125;<br><br>    void dfs1(<span class="hljs-type">TreeNode</span> root)&#123;<br>        <span class="hljs-keyword">if</span>(root == null) return;<br>        dfs2(root, root.<span class="hljs-keyword">val</span>);<br>        dfs1(root.left);<br>        dfs1(root.right);<br>    &#125;<br><br>    void dfs2(<span class="hljs-type">TreeNode</span> root, <span class="hljs-built_in">int</span> <span class="hljs-keyword">val</span>)&#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">val</span> ==t ) ans++;<br>        <span class="hljs-keyword">if</span>(root.left !=null) dfs2(root.left, <span class="hljs-keyword">val</span>+root.left.<span class="hljs-keyword">val</span>);<br>        <span class="hljs-keyword">if</span>(root.right !=null) dfs2(root.right, <span class="hljs-keyword">val</span>+root.right.<span class="hljs-keyword">val</span>);<br>    &#125;<br><br><br>&#125;<br></code></pre></td></tr></table></figure>
+              <p> 在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。 </p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">输入: [7,5,6,4]</span><br><span class="hljs-section">输出: 5</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h2>
+
+
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">输入: []</span><br><span class="hljs-section">输出: 0</span><br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">输入: [1,3,2,3,1]</span><br><span class="hljs-section">输出: 4</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>另cnt[i]表示i位置nums[i]之前比他大的数字个数，那么逆序对数就是cnt[i]累加。</p>
+<p>可以在归并排序中统计。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-keyword">class</span> Solution &#123;<br>    <span class="hljs-built_in">int</span> cnt = <span class="hljs-number">0</span>;<br>    public <span class="hljs-built_in">int</span> reverse<span class="hljs-constructor">Pairs(<span class="hljs-params">int</span>[] <span class="hljs-params">nums</span>)</span> &#123;<br>        <span class="hljs-built_in">int</span><span class="hljs-literal">[]</span> temp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span><span class="hljs-literal">[<span class="hljs-identifier">nums</span>.<span class="hljs-identifier">length</span>]</span>;<br>        <span class="hljs-built_in">int</span><span class="hljs-literal">[]</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span><span class="hljs-literal">[<span class="hljs-identifier">nums</span>.<span class="hljs-identifier">length</span>]</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++) &#123;<br>            arr<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span> = nums<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span>;<br>        &#125;<br>        merge<span class="hljs-constructor">Sort(0,<span class="hljs-params">nums</span>.<span class="hljs-params">length</span>-1, <span class="hljs-params">arr</span>, <span class="hljs-params">temp</span>)</span>;<br>        return cnt;<br>    &#125;<br>    <br>    void merge<span class="hljs-constructor">Sort(<span class="hljs-params">int</span> <span class="hljs-params">l</span>, <span class="hljs-params">int</span> <span class="hljs-params">r</span>, <span class="hljs-params">int</span>[] <span class="hljs-params">arr</span>, <span class="hljs-params">int</span>[] <span class="hljs-params">temp</span>)</span>&#123;<br>        <span class="hljs-keyword">if</span>(l &gt;= r) return; <span class="hljs-comment">//&gt; 考虑数组为空的情况， 也可以在之前判断</span><br>        <span class="hljs-built_in">int</span> mid = (r-l)/<span class="hljs-number">2</span> + l;<br>        merge<span class="hljs-constructor">Sort(<span class="hljs-params">l</span>, <span class="hljs-params">mid</span>, <span class="hljs-params">arr</span>, <span class="hljs-params">temp</span>)</span>;<br>        merge<span class="hljs-constructor">Sort(<span class="hljs-params">mid</span>+1, <span class="hljs-params">r</span>, <span class="hljs-params">arr</span>, <span class="hljs-params">temp</span>)</span>;<br>        <span class="hljs-comment">//merge</span><br> <br>        <span class="hljs-built_in">int</span> i = l, j = mid+<span class="hljs-number">1</span>, k = l;<br>        <span class="hljs-keyword">while</span>( i &lt;= mid<span class="hljs-operator"> &amp;&amp; </span>j&lt;=r)&#123; <br>            <span class="hljs-keyword">if</span>(arr<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span> &lt;= arr<span class="hljs-literal">[<span class="hljs-identifier">j</span>]</span>)&#123; <span class="hljs-comment">// = 考虑数组中值相同的数，不构成逆序对</span><br>                temp<span class="hljs-literal">[<span class="hljs-identifier">k</span><span class="hljs-operator">++</span>]</span> = arr<span class="hljs-literal">[<span class="hljs-identifier">i</span><span class="hljs-operator">++</span>]</span>;<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                cnt = cnt + mid - i +<span class="hljs-number">1</span>;<br>                temp<span class="hljs-literal">[<span class="hljs-identifier">k</span><span class="hljs-operator">++</span>]</span> = arr<span class="hljs-literal">[<span class="hljs-identifier">j</span><span class="hljs-operator">++</span>]</span>;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">while</span>(i&lt;=mid) temp<span class="hljs-literal">[<span class="hljs-identifier">k</span><span class="hljs-operator">++</span>]</span> = arr<span class="hljs-literal">[<span class="hljs-identifier">i</span><span class="hljs-operator">++</span>]</span>;<br>        <span class="hljs-keyword">while</span>(j&lt;=r) temp<span class="hljs-literal">[<span class="hljs-identifier">k</span><span class="hljs-operator">++</span>]</span> = arr<span class="hljs-literal">[<span class="hljs-identifier">j</span><span class="hljs-operator">++</span>]</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> q = l; q &lt;= r; q++) &#123;<br>            arr<span class="hljs-literal">[<span class="hljs-identifier">q</span>]</span> = temp<span class="hljs-literal">[<span class="hljs-identifier">q</span>]</span>;<br>        &#125;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
             </div>
             <hr>
             <div>
@@ -276,7 +285,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/dfs/">dfs</a>
+                      <a class="hover-with-bg" href="/tags/%E5%88%86%E6%B2%BB/">分治</a>
                     
                   </div>
                 
@@ -293,18 +302,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/09/29/98-%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A0%E6%A0%91/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">98-验证二叉搜素树</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/09/27/91-%E8%A7%A3%E7%A0%81%E6%96%B9%E6%B3%95/">
-                        <span class="hidden-mobile">91-解码方法</span>
+                      <a href="/2021/09/29/98-%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A0%E6%A0%91/">
+                        <span class="hidden-mobile">98-验证二叉搜素树</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
